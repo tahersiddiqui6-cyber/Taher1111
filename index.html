@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Local Service Booking</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f6fc;
+            margin: 0;
+            text-align: center;
+        }
+
+        header {
+            background: #164e63;
+            color: white;
+            padding: 20px;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .service {
+            background: white;
+            margin: 12px auto;
+            padding: 15px;
+            max-width: 350px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px #ccc;
+        }
+
+        button {
+            background: #0891b2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input, select {
+            padding: 10px;
+            margin: 8px;
+            width: 80%;
+            max-width: 300px;
+        }
+
+        footer {
+            background: #164e63;
+            color: white;
+            padding: 12px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Local Service Booking</h1>
+    <p>Book trusted services near you!</p>
+</header>
+
+<div class="container">
+
+    <h2>Our Services</h2>
+
+    <div class="service">
+        <h3>⚡ Electrician</h3>
+        <p>Starting from ₹299</p>
+        <button onclick="selectService('Electrician')">Book Now</button>
+    </div>
+
+    <div class="service">
+        <h3>🔧 Plumber</h3>
+        <p>Starting from ₹199</p>
+        <button onclick="selectService('Plumber')">Book Now</button>
+    </div>
+
+    <div class="service">
+        <h3>🧹 Home Cleaning</h3>
+        <p>Starting from ₹499</p>
+        <button onclick="selectService('Home Cleaning')">Book Now</button>
+    </div>
+
+    <h2>Book a Service</h2>
+
+    <form onsubmit="bookService(event)">
+        <input type="text" id="name"
+               placeholder="Your Name" required><br>
+
+        <input type="tel" id="phone"
+               placeholder="Phone Number" required><br>
+
+        <select id="service" required>
+            <option value="">Select Service</option>
+            <option>Electrician</option>
+            <option>Plumber</option>
+            <option>Home Cleaning</option>
+        </select><br>
+
+        <input type="text" id="address"
+               placeholder="Your Address" required><br>
+
+        <input type="date" id="date" required><br>
+
+        <button type="submit">Confirm Booking</button>
+    </form>
+
+    <p id="message"></p>
+
+</div>
+
+<footer>
+    <p>Local Service Booking | College Practical 5</p>
+</footer>
+
+<script>
+    function selectService(service) {
+        document.getElementById("service").value = service;
+        document.getElementById("name").focus();
+    }
+
+    function bookService(event) {
+        event.preventDefault();
+
+        let name = document.getElementById("name").value;
+        let service = document.getElementById("service").value;
+
+        document.getElementById("message").innerHTML =
+            "Thank you, " + name +
+            "! Your " + service +
+            " booking request has been submitted.";
+
+        document.getElementById("message").style.color = "green";
+    }
+</script>
+
+</body>
+</html>
